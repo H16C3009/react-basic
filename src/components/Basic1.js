@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
 
-const Basic1 = ( props ) => {
-    const [ count, setCount ] = useState(0)
+const Basic1 = () => {
+    const [ product, setProducts ] = useState({ name: '', price: ''})
 
     return (
         <React.Fragment>
-            <button onClick={ () => { setCount(preCount=>preCount+1); setCount(count=>count+1); } }>
-                count {count}</button>
-            <h1>Hello {props.name}!</h1>
-            <h1>Hello World!</h1>
+            <form>
+                <input type='text' value={product.name} 
+                    onChange={ e => setProducts({ ...product, name: e.target.value }) } />
+                <input type='text' value={product.price}
+                    onChange={ e => setProducts({ ...product, price: e.target.value }) } />
+            </form>
+            <h3>Product name is {product.name}</h3>
+            <h3>Product price is {product.price}</h3>
         </React.Fragment>
     )
 }
